@@ -30,10 +30,10 @@ public class Container {
     }
 
     public boolean collides(Ball ball) {
-        boolean rightOutlet = (ball.getX() - ball.getRadius() > this.getX() + this.getWidth());
-        boolean bottomOutlet = (ball.getY() - ball.getRadius() > this.getY() + this.getHeight());
-        boolean leftOutlet = (ball.getX() + ball.getRadius() < this.getX());
-        boolean topOutlet = (ball.getY() + ball.getRadius() < this.getY());
+        boolean rightOutlet = (ball.getX() + ball.getRadius() > this.getX() + this.getWidth());
+        boolean bottomOutlet = (ball.getY() + ball.getRadius() > this.getY() + this.getHeight());
+        boolean leftOutlet = (ball.getX() - ball.getRadius() < this.getX());
+        boolean topOutlet = (ball.getY() - ball.getRadius() < this.getY());
         if (rightOutlet || leftOutlet || topOutlet || bottomOutlet)
             return true;
         else
