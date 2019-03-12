@@ -36,9 +36,9 @@ public class MyComplex {
 
     @Override
     public String toString() {
-        if(imag == 0.0)
+        if(!isImaginary())
             return "(" + real + ")";
-        else if(real == 0.0)
+        else if(!isReal())
             return "(" + imag + "i)";
         else
             return "(" + real + "+" + imag + "i)";
@@ -108,16 +108,31 @@ public class MyComplex {
     }
 
     public MyComplex divide(MyComplex right) {
-        double denom = Math.pow(right.real, 2) + Math.pow(right.imag, 2);
-        if (denom == 0.0)
-            throw new ArithmeticException("Argument 'denom' is 0");
-        this.real = (this.real * right.real + (this.imag * right.imag)) / denom;
-        this.imag = (right.real * this.imag - (this.real * right.imag)) / denom;
+        try {
+            double denom = Math.pow(right.real, 2) + Math.pow(right.imag, 2);
+            if (denom == 0.0)
+                throw new ArithmeticException("Denominator is 0");
+            this.real = (this.real * right.real + (this.imag * right.imag)) / denom;
+            this.imag = (right.real * this.imag - (this.real * right.imag)) / denom;
+        } catch (ArithmeticException e) {
+            System.out.println(e);
+        }
         return this;
     }
 
     public MyComplex conjugate() {
         this.imag *= -1;
         return this;
+    }
+
+    public static void main(String[] args) {
+        MyComplex numerator = new MyComplex(1.0, 1.0);
+        MyComplex denominator = new MyComplex(0.0, 0.0);
+        MyComplex c1 = new MyComplex(0.0, 1.0);
+        MyComplex c2 = new MyComplex(1.0, 0.0);
+        numerator.divide(denominator);
+        System.out.println(c1.toString());
+        System.out.println(c2.toString());
+        System.out.println(denominator.toString());
     }
 }
