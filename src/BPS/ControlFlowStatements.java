@@ -155,7 +155,7 @@ public class ControlFlowStatements {
         System.out.print("Введите maxValue: ");
         int maxValue = in.nextInt();
         if(size <= 0)
-            throw new IllegalArgumentException("sizeё is negative or zero");
+            throw new IllegalArgumentException("size is negative or zero");
         if(maxValue < minValue)
             throw new IllegalArgumentException("maxValue can't be less than minValue");
         int[] count = new int[maxValue - minValue + 1];
