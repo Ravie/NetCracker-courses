@@ -21,12 +21,7 @@ release.properties
 ##########################
 ## IntelliJ
 ##########################
-*.iml
-.idea/
-*.ipr
-*.iws
 out/
-.idea_modules/
 
 ##########################
 ## Eclipse
